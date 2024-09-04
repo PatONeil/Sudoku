@@ -1,0 +1,61 @@
+/*--------------------------------------------------------
+ Themes using data-themes
+---------------------------------------------------------*/
+	:root {
+		--background-color: #fff;
+		--text-color:		#121416d8;
+		--link-color:		#5437df;
+		--font-size:		80%;
+		--cell-active:		rgba(240,255,80,0.4);
+		--cell-related:		rgba(255,255,192,0.2);
+		--cell-matched:		rgba(255,220,80,0.3);
+		--cell-opacity:		1.0;
+	}
+	html[data-theme="light"] {
+		--background-color: #fff;
+		--text-color:		#121416d8;
+		--link-color:		#5437df;
+		--cell-active:		rgba(240,255,80,0.4);
+		--cell-related:		rgba(255,255,192,0.4);
+		--cell-matched:		rgba(255,220,80,0.3);
+		--cell-opacity:		1.0;
+	}
+	html[data-theme="dark"] {
+		--background-color: #212a2e;
+		--text-color:		#f7f7f8;
+		--link-color:		#828fff;
+		--cell-active:		rgba(240,255,220,0.4);
+		--cell-related:		rgba(255,255,192,0.2);
+		--cell-matched:		rgba(255,220,80,0.3);
+		--cell-opacity:		0.9;
+		--img-opacity:		0.8;
+	}
+	html[data-theme="cornsilk"] {
+		--background-color: cornsilk;
+		--text-color:		#121416d8;
+		--link-color:		#5437df;
+		--cell-active:		rgba(220, 2220, 120, 0.9);
+		--cell-related:		rgba(255, 255, 192, 0.9);
+		--cell-matched:		rgba(255, 220, 80, 0.3);
+		--cell-opacity:		1.0;
+		--img-opacity:		1.0;
+	}
+	html[data-theme="aqua"] {
+		--background-color: rgb(52,93,167);
+		--text-color:		rgb(212,222,239);
+		--link-color:		#5437df;
+		--cell-active:		rgba(165,248,68, 0.4);
+		--cell-related:		rgba(165,248,68, 0.2);
+		--cell-matched:		rgba(220,248,68, 0.5);
+		--cell-opacity:		0.7;
+		--img-opacity:		0.8;
+	}
+	html[data-number="small"] {
+		--font-size:		70%
+	}
+	html[data-number="medium"] {
+		--font-size:		85%
+	}
+	html[data-number="large"] {
+		--font-size:		100%
+	}

@@ -1,0 +1,351 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Sudoku Puzzles</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="robots" content="noindex, nofollow">
+	<link rel="icon" href="images/S_64x64.png" />
+	<link rel='stylesheet' href="css/puzzleLayout.css">
+	<link rel='stylesheet' href="css/theme.css">
+	<link rel='stylesheet' href="css/customSelectOptionDialog.css">
+	<link rel="manifest" href="manifest.json" />
+	<meta name="googlebot" content="noindex, nofollow">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="Author" content="Patrick J. O'Neil" />
+	<meta name="Copyright" content="2024 by Patrick J. O'Neil" />
+<style>
+	body {
+		margin:0px;
+		padding:0px;
+		background-color: var(--background-color);
+	}
+
+	.puzzleArea {
+		display: flex;
+		justify-self: center;
+		align-items: center;
+		flex-wrap: wrap;
+		align-content: center;
+		justify-content: center;
+		background-color: var(--background-color);
+		color:	var(--text-color);
+	}
+	.puzzle {
+		padding: 0px;
+		border: 1px solid red;
+		display: grid;
+		row-gap: 0px;
+		column-gap: 0px;
+		font-family: sans-serif;
+	}
+	.block {
+		margin: 0px;
+		padding: 0px;
+		border: 1px solid blue;
+		display: grid;
+		row-gap: 0px;
+		column-gap: 0px;
+	}
+	.cell {
+		margin: 0px;
+		padding: 0px;
+		border: 1px solid lightgrey;
+		display: grid;
+		row-gap: 0px;
+		column-gap: 0px;
+		text-decoration: none;
+		text-align:center;
+		background: transparent;
+		font-size: var(--font-size);
+		align-content: center;
+		color:	var(--text-color);
+		user-select: none; /* Standard syntax */
+	}
+	.active {
+		background: var(--cell-active);
+	}
+	.related {
+		background: var(--cell-related);
+	}
+	.matched {
+		background: var(--cell-matched);
+	}
+	.pencil {
+		text-indent: 0px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		align-content: center;
+	}
+	.noPencils .pencil {
+		display:none;
+	}
+	.noPencils span {
+		display: inline;
+		position:relative;
+	}
+	.shake {
+		animation: shake 0.5s;	
+		animation-iteration-count: 15;
+		animation-timing-function: ease-in-out;
+	}
+	@keyframes shake {
+	  0% { transform: translate(5px, 5px) rotate(0deg); }
+	  10% { transform: translate(-2px, -2px) rotate(-10deg); }
+	  20% { transform: translate(-7px, 0px) rotate(2deg); }
+	  30% { transform: translate(9px, 9px) rotate(0deg); }
+	  40% { transform: translate(1px, -3px) rotate(10deg); }
+	  50% { transform: translate(-1px, 2px) rotate(-6deg); }
+	  60% { transform: translate(-9px, -9px) rotate(0deg); }
+	  70% { transform: translate(4px, 1px) rotate(10deg); }
+	  80% { transform: translate(-1px, -1px) rotate(6deg); }
+	  90% { transform: translate(1px, 2px) rotate(0deg); }
+	  100% { transform: translate(7px, -5px) rotate(-6deg); }
+	}
+	.puzzleArea button:not(.noPencils) span {
+		display: none;
+	}
+	.pencilButtons #btnP {
+		background: rgba(255,255,200,0.5);
+	}
+	.pencilButtonActive {
+		background: rgba(255,255,200,0.5) !important;
+		color: black !important;
+	}
+
+	.menu {
+		display:flex;
+		justify-content: space-around;
+		background: rgb(0,0,0,0.4);
+		height: calc(100vw / 9);
+		max-height: 54px;
+		align-content: center;
+		flex-wrap: wrap;
+		user-select: none; /* Standard syntax */
+	}
+	.menu button {
+		border: none;
+		background: transparent;
+	}
+	.menu img{
+		width: calc(100vw / 15);
+		height: calc(100vw / 15);
+		max-width: 40px;
+		max-height:40px;
+		opacity: var(--cell-opacity);
+		user-select: none; /* Standard syntax */
+		
+	}
+	.menu2 {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+	}
+	.numbers {
+		display:flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		align-content: flex-start;
+		height: fit-content;
+		user-select: none; /* Standard syntax */
+	}
+	.numbers button {
+		border-radius: 10px;
+		background-color: white;
+		background: rgba(0, 0, 0, 0.1);
+		color:var(--text-color);
+		text-decoration: none;
+		text-align:center;
+		font-size: 30px;
+		width: 40px;
+		height:40px;
+		margin: 4px;
+		user-select: none; /* Standard syntax */
+	}
+	.numbers img {
+		width: 40px;
+		height:40px;
+		margin-left: -9px;
+		margin-top:  -9px;
+		object-fit: contain;
+		opacity: var(--cell-opacity); 
+		user-select: none; /* Standard syntax */
+	}
+	.numbers a:focus{
+		border-color: yellow;
+	}
+	.hints {
+		margin:20px;
+		padding-left:20px;
+		padding-right:20px;
+		color: var(--text-color);
+	}
+	.hints h4 {
+		display: block;
+		margin:0px;
+	}
+	.hints header {
+		font-weight: bold;
+		margin-bottom:15px;
+	}	
+	.hints hintButtons {
+		border-top:1px solid black;
+		padding-right: 10px;
+		float: right;
+	}
+	.hints .btn {
+		float:right;
+		margin-top: 10px;
+		margin-right:10px;
+	}	
+	.footer {
+		display: block;
+		width:100%;
+		text-align:center;
+		color: var(--text-color);
+	}
+/*---------------------------------------------------------------------------------*/
+
+
+	
+</style>
+</head>
+<body>
+   
+<!--Main Body -- replacable html -->   
+<div id="container" class="container">
+	<div class="menu">
+		<button data-button="new">
+			<img src="images/newGame.svg" title="New Game">
+		</button>	
+		<button data-button="undo">
+			<img src="images/undo.png" title="Undo">
+		</button>	
+		<button data-button="check">
+			<img src="images/checkMark.png" title="Check for Errors">
+		</button>	
+		<button data-button="hint">
+			<img src="images/questionMark.png" title="Hint for next number">
+		</button>	
+		<button data-button="settings">
+			<img src="images/setting.png" title="Settings">
+		</button>	
+	</div>
+	<div class="menu2">	
+		<div class="numbers">
+			<button id="btn1" tabindex="10">1</button>
+			<button id="btn2" tabindex="10">2</button>
+			<button id="btn3" tabindex="10">3</button>
+			<button id="btn4" tabindex="10">4</button>
+			<button id="btn5" tabindex="10">5</button>
+			<button id="btn6" tabindex="10">6</button>
+			<button id="btn7" tabindex="10">7</button>
+			<button id="btn8" tabindex="10">8</button>
+			<button id="btn9" tabindex="10">9</button>
+			<button id="btnP" tabindex="10"><img src="images/pencil.png"></button>
+		</div>
+		<div class="hints"></div>
+	</div>
+	<div class="footer"><div>Copyright 2024 by Patrick J. O'Neil</div></div>
+	<div class="puzzleArea">
+	</div>
+</div>
+
+	<dialog id="optionsDialog" class="e-dialog" style="width: 300px;">
+		<header style="font-weight: bold;margin-bottom:15px;">
+			Sudoku Settings: 
+		</header>
+		<div id="optionsDetails" style="padding-left: 10px;height:350px;">
+			<h4 style="margin:0px;">Select Puzzle Difficulty:</h4>
+			<div id="optionDifficulty" class="custom-select">
+				<button class="select-button" role="combobox" aria-label="select button" aria-haspopup="listbox" aria-expanded="false" aria-controls="select-dropdown"> <span class="selected-value">Open this select menu</span> <span class="arrow"></span> </button>
+				<ul class="select-dropdown" role="listbox" id="select-dropdown">
+					<li role="option" data-difficulty="easy">
+						<input type="radio" name="optionDifficulity" />
+						<label>Easy</label>
+					</li>
+					<li role="option" data-difficulty="medium" class="active">
+						<input type="radio" name="optionDifficulty" />
+						<label>Medium</label>
+					</li>
+					<li role="option" data-difficulty="hard" >
+						<input type="radio" name="optionDifficulty" />
+						<label>Hard</label>
+					</li>
+					<li role="option" data-difficulty="fiendish">
+						<input type="radio" name="optionDifficulty" />
+						<label>Fiendish</label>
+					</li>
+					<li role="option" data-difficulty="superior">
+						<input type="radio" name="optionDifficulty" />
+						<label>Superior</label>
+					</li>
+				</ul>
+			</div>
+			<h4 style="margin:0px;">Select Show Pencil Notes:</h4>
+			<div id="optionPencilNotes" class="custom-select">
+				<button class="select-button" role="combobox" aria-label="select button" aria-haspopup="listbox" aria-expanded="false" aria-controls="select-dropdown"> <span class="selected-value">Open this select menu</span> <span class="arrow"></span> </button>
+				<ul class="select-dropdown" role="listbox" id="select-dropdown">
+					<li role="option" data-pencilnotes="none">
+						<input type="radio" name="optionPencilNotes" />
+						<label>Show no pencil notes</label>
+					</li>
+					<li role="option" data-pencilnotes="unfilled">
+						<input type="radio" name="optionPencilNotes" />
+						<label>Pencil notes area without candidates</label>
+					</li>
+					<li role="option" data-pencilnotes="filled" class='active'>
+						<input type="radio" name="optionPencilNotes" />
+						<label>Pencil notes area with candidates</label>
+					</li>
+				</ul>
+			</div>
+			<h4 style="margin:0px;">Select Theme:</h4>
+			<div id="optionTheme" class="custom-select">
+				<button class="select-button" role="combobox" aria-label="select button" aria-haspopup="listbox" aria-expanded="false" aria-controls="select-dropdown"> <span class="selected-value">Open this select menu</span> <span class="arrow"></span> </button>
+				<ul class="select-dropdown" role="listbox" id="select-dropdown">
+					<li role="option" data-theme="light">
+						<input type="radio" name="optionTheme" class='active' />
+						<label>Light Theme</label>
+					</li>
+					<li role="option" data-theme="dark">
+						<input type="radio" name="optionTheme" />
+						<label>Dark Theme</label>
+					</li>
+					<li role="option" data-theme="cornsilk">
+						<input type="radio" name="optionTheme" />
+						<label>Corn Silk Theme</label>
+					</li>
+					<li role="option" data-theme="aqua">
+						<input type="radio" name="optionTheme" />
+						<label>Aqua Theme</label>
+					</li>
+				</ul>
+			</div>
+			<h4 style="margin:0px;">Select Number Size:</h4>
+			<div id="optionSize" class="custom-select">
+				<button class="select-button" role="combobox" aria-label="select button" aria-haspopup="listbox" aria-expanded="false" aria-controls="select-dropdown"> <span class="selected-value">Open this select menu</span> <span class="arrow"></span> </button>
+				<ul class="select-dropdown" role="listbox" id="select-dropdown">
+					<li role="option" data-size="small">
+						<input type="radio" name="optionSize" class='active' />
+						<label>Smaller Font Size</label>
+					</li>
+					<li role="option" data-size="medium">
+						<input type="radio" name="optionSize" />
+						<label>Standard Font Size</label>
+					</li>
+					<li role="option" data-size="large">
+						<input type="radio" name="optionSize" />
+						<label>Larger Font Size</label>
+					</li>
+				</ul>
+			</div>
+		</div>	
+		<div style="border-top:1px solid black;text-align:right;padding-right: 10px;">
+			<button class="btn" style="margin-top: 10px;margin-right:10px;" id="optionsOKButton">OK</button>
+			<button class="btn" style="margin-top: 10px;" id="optionsCancelButton">Cancel</button>
+		</div>
+	</dialog>
+<script src="js/sudoku.js"></script>
+</html>

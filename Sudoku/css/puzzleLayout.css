@@ -1,0 +1,133 @@
+/*-----Start of Sudoku Layout Definition-------------------------------------------------------------*/
+	.container {
+		margin: 0;
+		width: 100%;
+		height: 100vh;
+		display: grid;
+		gap: 0px;
+	}
+	.title 		{grid-area: ti;}
+	.menu 		{grid-area: me; }
+	.puzzleArea	{grid-area: pu; }
+	.menu2		{grid-area: m2; }
+	.footer 	{grid-area: ft; }
+/*-----End of Sudoku Layout Definition---------------------------------------------------------------*/
+
+/*-----Start of Puzzle Size Definition-------------------------------------------------------------
+	The following css defines the size of the game area relative to vw ...
+	The margin is used to adjust the size of the game and must be calculated from vw
+	The size must also take into account border to determine size of blocks,cells and pencils.
+--------------------------------------------------------------------------------------------------*/	
+	.puzzle {
+		width: var(--puzzleSize);
+		grid-template-columns:  repeat(3, calc(var(--puzzleSize) / 3));
+		height: calc(var(--puzzleSize) - 2px);
+	}
+	.canvas {
+		width: var(--puzzleSize);
+		position:absolute;
+		height: calc(var(--puzzleSize) - 2px);
+		pointer-events: none;
+	}
+	.block {
+		grid-template-columns: calc((var(--puzzleSize) - 8px) / 9) calc((var(--puzzleSize) - 8px) / 9) calc((var(--puzzleSize) - 8px) / 9);
+		height: calc((var(--puzzleSize) - 8px) / 3);
+		font-size: calc((var(--puzzleSize) - 14px) / 11);
+		/*overflow:hidden;*/
+	}
+	.cell {
+		grid-template-columns: calc((var(--puzzleSize) - 14px) / 27) calc((var(--puzzleSize) - 14px) / 27) calc((var(--puzzleSize) - 14px) / 27);
+		height: calc((var(--puzzleSize) - 10px) / 9);
+		text-indent: calc((var(--puzzleSize) - 8px)  / 33);
+		/*overflow:hidden;*/
+	}
+	.pencil {
+		text-indent: 0px;
+		height: calc((var(--puzzleSize) - 14px) / 27) !important;
+		width:  calc((var(--puzzleSize) - 14px) / 27) !important;
+		font-size: calc((var(--puzzleSize) - 14px) / 35);
+	}
+/*---End of Puzzle Size Definition-------------------------------------------------------------------*/
+/*-----Start of Media Size/Layout Definition --------------------------------------------------
+	The following css defines the size of the game area relative to vw ...
+	The margin is used to adjust the size of the game and must be calculated from vw
+	The size must also take into account border to determine size of blocks,cells and pencils.
+--------------------------------------------------------------------------------------------------*/	
+@media (max-aspect-ratio: 8/7)  {
+	:root {
+		--puzzleSize:  60vw;
+		--menu2Area:   calc( 100vh - var(--puzzleSize) - 115px);
+	}
+	.container {
+		display:grid;
+		grid-template-columns: 100%;
+		grid-template-rows: 85px var(--puzzleSize) var(--menu2Area) 30px;
+		grid-template-areas:"me"
+							"pu"
+							"m2"
+							"ft";
+	}
+	.menu {
+		height: 54px;
+	}
+	.menu img{
+		width: 40px;
+		height:40px;
+		
+	}
+	.menu2 {
+		/*margin-top:20px;
+		justify-content: flex-start;	*/
+	}
+	.numbers {
+		width: 100%;
+		margin-top:25px;
+	}
+}	
+
+@media (max-aspect-ratio: 1/1) {
+	:root {
+		--puzzleSize:  60vw;
+	}
+}
+@media (max-aspect-ratio: 5/7) {
+	:root {
+		--puzzleSize:  80vw;
+	}
+}
+
+@media (aspect-ratio > 8/7 ) {
+	:root {
+		--puzzleSize:  50vw;
+		--area2:	   calc( 100vh - 115px);
+	}
+	.container {
+		display:grid;
+		grid-template-columns: 60% 40%;
+		grid-template-rows: 70px var(--area2) 20px;
+		grid-template-areas:"me me"
+							"pu m2"
+							"ft ft";
+	
+	}
+	.numbers {
+		width: 180px;
+	}
+	.hints: height:120px;
+	
+}	
+@media (aspect-ratio > 667/580 ) {
+	:root {
+		--puzzleSize:  40vw;
+	}
+}
+@media (aspect-ratio > 1070/560 ) {
+	:root {
+		--puzzleSize:  30vw;
+	}
+}
+@media (aspect-ratio > 1200/500 ) {
+	:root {
+		--puzzleSize:  25vw;
+	}
+}
