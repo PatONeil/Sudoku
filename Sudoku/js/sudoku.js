@@ -113,17 +113,20 @@ Sudoku.generatePuzzle=function(level) {
                             [0,0,3,7,0,0,0,5,0,0,7,0,0,5,0,8,0,0,1,0,0,0,0,6,0,0,4,5,0,2,0,0,0,0,0,0,8,0,0,9,0,4,0,0,6,0,0,0,0,0,0,9,0,2,3,0,0,5,0,0,0,0,7,0,0,4,0,9,0,0,6,0,0,2,0,0,0,7,4,0,0], // score = 515
                             [0,0,1,6,0,0,9,0,0,6,3,0,0,0,0,0,0,5,0,0,2,0,5,0,0,0,0,2,6,0,8,0,0,4,0,0,0,5,0,0,2,0,0,3,0,0,0,8,0,0,4,0,9,6,0,0,0,0,7,0,6,0,0,7,0,0,0,0,0,0,2,9,0,0,4,0,0,9,5,0,0], // score = 585
                             [0,9,7,1,0,0,3,4,0,0,1,0,2,3,0,0,0,7,8,0,0,7,0,0,0,0,0,0,0,9,0,0,2,0,0,0,0,2,0,5,0,3,0,7,0,0,0,0,8,0,0,2,0,0,0,0,0,0,0,6,0,0,4,9,0,0,0,5,7,0,6,0,0,6,3,0,0,1,8,5,0], // score =570
-                            [0,0,0,0,0,0,0,1,6,2,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,6,0,1,7,0,0,0,0,2,0,0,0,9,0,0,5,0,0,4,0,0,0,0,0,0,0,0,0,3,0,0,0,0,8,0,0,0,0,0,0,6,0,0,4,0,0,5,0,0,4,0,0,0,0]   // score = 565
+                            [0,0,0,0,0,0,0,1,6,2,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,6,0,1,7,0,0,0,0,2,0,0,0,9,0,0,5,0,0,4,0,0,0,0,0,0,0,0,0,3,0,0,0,0,8,0,0,0,0,0,0,6,0,0,4,0,0,5,0,0,4,0,0,0,0],  // score = 565
+							[0,6,2,3,0,0,1,0,0,4,0,0,6,1,0,0,0,0,1,5,0,0,9,0,7,0,6,0,0,0,0,0,1,6,0,0,5,0,0,0,0,6,0,0,4,6,9,0,0,4,0,0,1,2,2,0,0,0,6,5,9,8,7,0,0,0,7,3,0,0,0,0,0,0,5,2,8,0,0,0,0]   // score = 660
                         ],
 				hard: 	[		
 							[0,0,1,8,0,0,6,0,0,5,0,0,0,0,0,0,0,0,0,0,0,7,9,0,0,0,0,0,7,3,0,0,0,0,0,0,0,8,0,9,0,4,0,1,0,0,0,0,0,0,0,2,9,0,0,0,0,0,1,5,0,0,0,0,0,0,0,0,0,0,0,3,0,0,6,0,0,2,4,0,0],  // score =870          
                             [0,0,0,0,0,0,0,1,2,5,0,0,0,0,8,0,0,0,0,0,0,7,0,0,0,0,0,6,0,0,1,2,0,0,0,0,7,0,0,0,0,0,4,5,0,0,0,0,0,3,0,0,0,0,0,3,0,0,0,0,8,0,0,0,0,0,5,0,0,7,0,0,0,2,0,0,0,0,0,0,0], // score = 880;
-                            [0,6,5,0,0,0,9,8,0,7,0,0,0,3,0,0,0,0,3,0,0,0,0,2,4,0,0,0,0,0,3,0,0,0,9,8,0,0,4,0,2,0,6,0,0,8,5,0,0,0,6,0,0,0,0,0,6,8,0,0,0,0,1,0,0,0,0,9,0,0,0,7,0,3,7,0,0,0,8,4,0]  // score =965 Coloring
+                            [0,6,5,0,0,0,9,8,0,7,0,0,0,3,0,0,0,0,3,0,0,0,0,2,4,0,0,0,0,0,3,0,0,0,9,8,0,0,4,0,2,0,6,0,0,8,5,0,0,0,6,0,0,0,0,0,6,8,0,0,0,0,1,0,0,0,0,9,0,0,0,7,0,3,7,0,0,0,8,4,0], // score =965 Coloring
+							[0,0,6,4,0,0,7,0,0,0,2,8,0,0,0,0,0,6,3,7,0,0,5,0,0,9,0,0,0,0,0,6,1,0,7,0,0,0,7,0,4,5,0,0,0,0,0,3,2,8,0,0,0,1,7,0,0,0,9,0,6,8,0,6,0,0,0,3,0,0,1,7,0,0,1,8,0,0,5,0,0]  // score = 880
                         ],
 				fiendish: [		
                             [0,0,1,8,0,0,6,0,0,5,0,0,0,0,0,0,0,0,0,0,0,7,9,0,0,0,0,0,7,3,0,0,0,0,0,0,0,8,0,9,0,4,0,1,0,0,0,0,0,0,0,2,9,0,0,0,0,0,1,5,0,0,0,0,0,0,0,0,0,0,0,3,0,0,6,0,0,2,4,0,0],  // score =870          
                             [0,0,0,0,0,0,0,1,2,5,0,0,0,0,8,0,0,0,0,0,0,7,0,0,0,0,0,6,0,0,1,2,0,0,0,0,7,0,0,0,0,0,4,5,0,0,0,0,0,3,0,0,0,0,0,3,0,0,0,0,8,0,0,0,0,0,5,0,0,7,0,0,0,2,0,0,0,0,0,0,0], // score = 880;
-                            [0,6,5,0,0,0,9,8,0,7,0,0,0,3,0,0,0,0,3,0,0,0,0,2,4,0,0,0,0,0,3,0,0,0,9,8,0,0,4,0,2,0,6,0,0,8,5,0,0,0,6,0,0,0,0,0,6,8,0,0,0,0,1,0,0,0,0,9,0,0,0,7,0,3,7,0,0,0,8,4,0]  // score =965 Coloring
+                            [0,6,5,0,0,0,9,8,0,7,0,0,0,3,0,0,0,0,3,0,0,0,0,2,4,0,0,0,0,0,3,0,0,0,9,8,0,0,4,0,2,0,6,0,0,8,5,0,0,0,6,0,0,0,0,0,6,8,0,0,0,0,1,0,0,0,0,9,0,0,0,7,0,3,7,0,0,0,8,4,0], // score =965 Coloring
+							[0,0,0,5,0,3,0,4,0,1,3,0,2,7,0,0,0,0,0,5,0,0,0,8,0,0,0,0,0,4,0,8,9,0,0,5,0,1,0,3,5,0,0,2,0,7,0,5,4,2,0,3,9,1,5,0,3,8,0,0,0,1,6,8,0,0,6,3,0,0,5,0,0,0,0,7,0,0,8,0,0]
  						],
                 superior: [    
                             [0,4,3,9,8,0,2,5,0,6,0,0,4,2,5,0,0,0,2,0,0,0,0,1,0,9,4,9,0,0,0,0,4,0,7,0,3,0,0,6,0,8,0,0,0,4,1,0,2,0,9,0,0,3,8,2,0,5,0,0,0,0,0,0,0,0,0,4,0,0,0,5,5,3,4,8,9,0,7,1,0], // score = 1200
@@ -131,7 +134,7 @@ Sudoku.generatePuzzle=function(level) {
                             [0,0,0,0,5,0,0,9,0,0,0,0,0,0,0,5,8,0,0,6,0,7,0,3,0,0,4,4,3,7,0,1,8,0,5,2,2,0,0,4,0,0,3,0,8,0,0,0,0,0,0,0,0,0,0,2,3,0,0,7,0,0,9,0,0,9,3,0,0,1,0,6,0,0,4,0,0,0,0,3,0], // 1260 xy-wing, coloring and forcing chains
                             [0,6,3,0,0,0,0,7,9,4,8,0,0,0,1,2,3,0,0,0,0,3,4,0,0,0,0,0,5,0,4,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,9,0,0,3,5,6,6,0,1,0,0,0,0,8,0,0,4,8,0,0,0,0,0,2,0,3,0,0,6,2,5,0,1], // 1405 swordfish, xy-Wingcoloring and forcing chains
                             [0,0,0,2,8,5,6,1,3,1,0,0,0,0,4,0,9,8,3,8,0,9,0,1,0,0,4,8,0,0,0,5,0,3,0,7,9,0,0,0,0,0,4,8,5,0,5,0,8,0,7,1,0,9,0,9,0,0,0,0,8,0,2,0,2,0,0,0,0,5,7,1,0,0,0,0,0,2,9,0,6], // 1840 swordfish, coloring and forcing chains
-                            [4,0,0,5,2,8,0,0,0,0,0,9,0,6,3,0,5,2,2,0,0,7,0,0,8,3,0,8,7,0,3,0,2,9,0,0,9,0,0,6,0,4,0,0,0,3,0,0,8,0,0,0,1,0,5,9,8,0,3,6,0,7,1,0,0,0,0,8,0,5,0,0,6,2,0,0,0,5,0,0,0]  // score= 1260 x- wing++
+                            [0,0,7,0,0,6,0,4,0,4,0,0,3,0,0,0,7,0,0,0,8,4,2,0,0,6,9,6,8,4,0,5,0,0,3,2,3,1,0,6,0,9,7,5,0,0,0,0,0,3,0,1,0,0,0,4,0,0,0,0,0,0,0,9,0,3,0,0,0,0,0,0,8,0,6,9,7,0,4,1,5] // score= 1260 x- wing++
 						],	
 				};
 	let n = rand(seeds[level].length);
@@ -569,26 +572,33 @@ Sudoku.getHint = function() {
 		document.getElementById('hintCancelButton').addEventListener('click',cancelButton);
 	}	
 	if (document.querySelector('[data-button="check"]').click()) return;
-	Sudoku.undoList.push([]);
-	for (let cell of Sudoku.puzzle) cell.savedCandidates = cell.domCandidates;
-	Sudoku.updateDomCandidates();
+	if (Sudoku.showPencilNotes == "none") {
+		Sudoku.undoList.push([]);
+		Sudoku.updateDomCandidates();
+	}
 	Sudoku.hintOjbect = {affectedCells:[Sudoku.active]};
 	let solvers = ["singleCandidate","hiddenSingle","BlkAndRowCol", "blkAndBlk", "nakedSubset", "hiddenSubset", "XYWings","xWings","swordfish","chainedPairs","linkedPairs"];
 	for (let hint of solvers) {
 		let rc = this.solvers[hint]();
 		if (rc==false) continue;
+		if (Sudoku.showPencilNotes == "none" && rc.solutionType!=1) break;
 		document.querySelector('.hints').classList.add('keepHint');
 		rc.step = 0;
 		for (let cell of this.puzzle)  	  cell.domCell.classList.remove('active','related','matched');
 		for (let cell of rc.relatedCells) cell.domCell.classList.add('related');
 		Sudoku.hintOjbect = rc;
-		for (let cell of Sudoku.puzzle) cell.domCandidates = cell.savedCandidates;
-		Sudoku.undoList.pop();
+		if (Sudoku.showPencilNotes == "none") {
+			for (c of Sudoku.puzzle) c.domCandidates=[];
+			Sudoku.undoList.pop();
+		}
 		displayHintDialog(rc);
 		return;
 	}
-	for (let cell of Sudoku.puzzle) cell.domCandidates = cell.savedCandidates;
-	Sudoku.undoList.pop();
+	document.querySelector('.hints').innerHTML = 'No hint avaiable without more information.  Please fill in pencil notes.';
+	if (Sudoku.showPencilNotes == "none") {
+		for (c of Sudoku.puzzle) c.domCandidates=[]
+		Sudoku.undoList.pop();
+	}
 };
 Sudoku.solvers={
 	singleCandidate: function() {
@@ -1021,46 +1031,41 @@ Sudoku.solvers={
 		return false;
 	},
 	hiddenSubset: 	function() {
-		function getSubsets(cell) {
-			let candidates = cell.domCandidates;
-			let subsets =[];
-			if (candidates.length<2) return subsets;
-			if (candidates.length >= 2){
-				subsets.push([candidates[0], candidates[1]]);
+		function testHiddenSubset(list) {
+			let cdts, hidden_cdts = [];
+			let cell,cells,nums,affected,values=[],rc={};
+			for (let i=0;i<list.length;i++) {
+				cell = list[i];
+				let cdts = cell.domCandidates;
+				if (cdts.length==2 || cdts.length==3) hidden_cdts.push(cdts);
 			}
-			if (candidates.length >= 3){
-				subsets.push([candidates[0], candidates[2]]);
-				subsets.push([candidates[1], candidates[2]]);
-				subsets.push([candidates[0], candidates[1], candidates[2]]);
-			}
-			if (candidates.length >= 4){
-				subsets.push([candidates[0], candidates[1], candidates[3]]);
-				subsets.push([candidates[1], candidates[2], candidates[3]]);
-				subsets.push([candidates[0], candidates[1], candidates[2]]);
-				subsets.push([candidates[0], candidates[1], candidates[2], candidates[3]]);
-			}	
-			return subsets;
-		}
-		function testHiddenSubset(cell,list,subset) {
-			let arr=[];
-			let affected=[];
-			let multiple=[];
-			for (let c of list) {
-				if (c.domValue!=' ') continue;
-				let cdts = c.domCandidates;
-				if (subset.every(val=>cdts.includes(val))) {
-					arr.push(c);
-					if (cdts.notIn(subset).length!=0) multiple.push(c);
+			for (let nums of hidden_cdts) {
+				cells = [];
+				for (let i=0;i<list.length;i++) {
+					cell = list[i];
+					cdts = cell.domCandidates;
+					if (nums.some(val=>cdts.includes(val))) cells.push(cell);
 				}
-				else if (subset.some( val=>cdts.includes(val))) affected.push(c);
-			}
-			//affected = affected.notIn(arr);
-			if (arr.length==subset.length && affected.length==0 && multiple.length!=0) {
-				return [arr,[1,2,3,4,5,6,7,8,9].notIn(subset)];
+				if (cells.length==nums.length) {
+					affected=[]
+					for (cell of cells) {
+						cdts = cell.domCandidates;
+						if (!cdts.every(val=>nums.includes(val))) {
+							affected.push(cell);
+							values=values.concat(cdts.notIn(nums));
+						}
+					}
+					if (affected.length==0) continue;
+					rc.relatedCells=list;
+					rc.affectedCells=cells;
+					rc.subset=nums;
+					rc.value=[...new Set(values)];
+					return rc;
+				}
 			}
 			return false;
 		}
-		function processHiddenResponse(cell,list,subset,rc1) {
+		function processHiddenResponse(rc) {
 			function setupDrawings() {
 				rc.drawings=[];
 				let drawing,first;
@@ -1070,46 +1075,32 @@ Sudoku.solvers={
 							rc.drawings.push({type:'circle',row:cell.row,col:cell.col,note:num});
 					}
 				}
-				for (let num of subset) {
-					first = true;
+				for (let num of rc.subset) {
 					for (let cell of rc.affectedCells){
 						if (!cell.domCandidates.includes(num)) continue;
-						if(first) {
-							first=false;
-							drawing={type:'line',point1:{row:cell.row,col:cell.col,note:num,circle:true}};
-						}
-						else {
-							drawing.point2={row:cell.row,col:cell.col,note:num,circle:true};
-							rc.drawings.push(drawing);
-						}
+						drawing={type:'line',point1:{row:cell.row,col:cell.col,note:num,circle:true}};
+						drawing.point2={row:cell.row,col:cell.col,note:num,circle:false};
+						rc.drawings.push(drawing);
 					}
 				}
 			}
-			let rc = {};
 			rc.solutionType = 2;
-			rc.subset = subset;
-			rc.type = 'Hidden Subset';
-			rc.relatedCells = list;
-			rc.affectedCells = rc1[0];
-			rc.value = rc1[1];
-			rc.cell = cell;
-			rc.row = cell.row;
-			rc.col = cell.col;
+			rc.type = `Hidden Subset(${rc.subset.length})`;
 			setupDrawings();
 			rc.text = [[`A hidden subset exists in highlighted area.`],
-					   [`The values ${subset.join(', ')} are unique in the highlighted area, and therefore other candidates cannot exist in the same cell.`]
+					   [`The values [${rc.subset.join(', ')}] are unique in the highlighted area, and therefore other candidates [${rc.value.join(', ')}] cannot exist in the same cells.`]
 					  ];
 			return rc;
 		}
-		let cell,rc1,list,subset;
-		for (cell of Sudoku.puzzle) {
-			let subsets = getSubsets(cell);
-			for (subset of subsets) {
-				for (let rcb of ['Row','Column','Block']) {
-					list = Sudoku['get'+rcb+'Cells'](cell);
-					rc1 = testHiddenSubset(cell,list,subset);
-				    if (rc1) return processHiddenResponse(cell,list,subset,rc1);
-				}
+		let cell,rc,list,subset;
+		for (let rcb of ['Row','Column','Block']) {
+			for (let i=0;i<9;i++) {
+				if 		(rcb=='Row') 	cell = Sudoku.puzzle[i*9];
+				else if (rcb=='Column') cell = Sudoku.puzzle[i];
+				else if (rcb=='Block')  cell = Sudoku.puzzle[Math.floor(i/3)*27+(i%3)*3]
+				list = Sudoku['get'+rcb+'Cells'](cell);
+				rc = testHiddenSubset(list);
+				if (rc) return processHiddenResponse(rc);
 			}
 		}
 		return false;
@@ -1755,8 +1746,16 @@ Sudoku.showOptionsDialog = function() {
 	document.getElementById("optionsOKButton").addEventListener('click', function() {
         self.difficulty = getOption('optionDifficulty','difficulty');
         self.showPencilNotes = getOption('optionPencilNotes','pencilnotes');
-		if (self.showPencilNotes != "none")  document.getElementById("btnP").style.display="";
-		else if (self.showPencilNotes == "none") document.getElementById("btnP").style.display='none';
+		if (self.showPencilNotes != "none")  {
+			document.getElementById("btnP").style.display="";
+			document.querySelectorAll('.cell').forEach((c)=>{
+				if (c.puzCell.domValue==' ') c.classList.remove('noPencils');
+			});
+		}
+		else if (self.showPencilNotes == "none") {
+			document.querySelectorAll('.cell').forEach((c)=>c.classList.add('noPencils'));
+			document.getElementById("btnP").style.display='none';
+		}
 		if (self.showPencilNotes == "filled") {
 			self.undoList.push([]);
 			self.updateDomCandidates();
@@ -1793,6 +1792,7 @@ Sudoku.newGame = function() {
 			document.querySelectorAll('.pencil').forEach((p)=> p.innerText=" ");
 			Sudoku.undoList.pop();
 	}
+	Sudoku.undoList.push([]);
 	return rc;	
 };
 Sudoku.initializeEvents = function(newPuzzle) {
@@ -1909,7 +1909,10 @@ Sudoku.initializeEvents = function(newPuzzle) {
 		}	
 	}
 	function undoFunction() {	
-		if (self.undoList.length==0) return;
+		if (self.undoList.length==0) {
+			self.undoList.push([]);
+			return;
+		}
 		let undoList = self.undoList.pop();
 		undoList.reverse();
 		for (let item of undoList) {
@@ -2364,19 +2367,19 @@ error4='781 2 3  54238 1  6394 12 8956812 3 4786935212137  68939 2   1 86413   2
 error5='3 51    426945 1  1 4   5  5326 491 948 1  5 61759  4 4518  329723941  5896235471'
 error6=' 4  28 1 876  32942917463851  8795    9  4   4  2 5   9  4   52 2468             '
 error7='194 8    5 89 4 1 6 2   849827456391961  3458453891267 49    8 716 4893  85  91 4'
-
-//Sudoku.generateHTML();
-//Sudoku.addPuzzle(finnedXwing);
+error8='050490731900300658000065942039000576000703189817659324000980265002500093090236017'.replaceAll('0',' ');
+Sudoku.generateHTML();
+Sudoku.initializeEvents();
+//Sudoku.addPuzzle(error8);
 //Sudoku.addPuzzle(Sudoku.generatePuzzle('easy'));
-//Sudoku.newGame();
 */
 Sudoku.initializeEvents(); 
 Sudoku.newGame();
 Sudoku.test = async function() {
 	function delay(seconds) {
 		return new Promise(resolve=>setTimeout(resolve, seconds * 1000));
-	}
-	for (let i=1;i<=1000;i++) {
+	} 
+	for (let i=1;i<=5000;i++) {
 		console.log("Game "+i);
 		if (!Sudoku.newGame()) break;
 		await delay(0.1);
