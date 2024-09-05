@@ -111,6 +111,9 @@
 	
 	}
 	.numbers {
+		height: 50% !important;
+		justify-content: flex-end !important;
+		align-content: end !important;
 		width: 180px;
 	}
 	.hints: height:120px;
