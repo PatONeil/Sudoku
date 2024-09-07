@@ -1894,7 +1894,9 @@ Sudoku.initializeEvents = function(newPuzzle) {
 			if (cell.domValue==' ') {
 				cell.domValue = num;
 				cell.domCandidates=[];
-				if (Sudoku.puzzle.every(cell=>cell.domValue!=' ')) Sudoku.animateFinish();
+				if (Sudoku.puzzle.every(cell=>cell.domValue!=' ')) {
+					if (checkForErrors()==false) Sudoku.animateFinish();
+				}	
 			}
 			else {
 				cell.domValue = ' ';
@@ -1947,9 +1949,23 @@ Sudoku.initializeEvents = function(newPuzzle) {
 		}
 		function fixErrors() {
 			let cell = document.querySelector('.active').puzCell;
+			let cv = cell.domValue;
 			cell.domValue = ' ';
-			cell.domCandidates=getCandidates(cell);
-			document.querySelector('.hints').innerHTML = '';
+			if (Sudoku.showPencilNotes != "none") {
+				cell.domCandidates=getCandidates(cell);
+				if (cv!=' ') {  // need to fix deleted values in related cells
+					let related = self.getRelatedCells(cell);
+					for (let c of related) {
+						let cdts = getCandidates(c);
+						if (!cdts.includes(cv)) {
+							cdts.push(cv);
+							c.domCandidates=cdts;
+						}
+					}
+				}
+			}				
+			//document.querySelector('.hints').innerHTML = '';
+			checkForErrors();
 		}
 		for (let i=0;i<81;i++) {
 			let cell = self.puzzle[i];
@@ -1963,7 +1979,7 @@ Sudoku.initializeEvents = function(newPuzzle) {
 			let cell = self.puzzle[i];
 			if (cell.domValue==' ') {
 				let domCandidates = getCandidates(cell);
-				let rc = cell.domCandidates.filter(x=>!domCandidates.includes(x));
+				let rc = domCandidates.filter(x=>!cell.domCandidates.includes(x));
 				if (rc.length>0){
 					displayError(cell,"Pencil value is incorrect");
 					return true;
