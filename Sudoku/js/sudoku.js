@@ -1900,15 +1900,24 @@ Sudoku.initializeEvents = function(newPuzzle) {
 			}
 			else {
 				cell.domValue = ' ';
-				let cdts = cell.domCandidates;
-				let ndx  = cdts.indexOf(num);
-				if (ndx!=-1) {
-					cdts.splice(ndx,1);
-					cell.domCandidates=cdts; 
+			}
+
+			if (Sudoku.showPencilNotes != "none") {
+				let cells = Sudoku.getRelatedCells(cell);
+				for (c of cells) {
+					let cdts = c.domCandidates;
+					let ndx  = cdts.indexOf(num);
+					if (ndx!=-1 && cell.domValue!=' ') {
+						cdts.splice(ndx,1);
+						c.domCandidates=cdts; 
+					}
+					else if (ndx!=-1 && cell.domValue==' ') {
+						cdts.push(num);
+						c.domCandidates=cdts;
+					}
 				}
-			}				
-			self.updateDomCandidate(cell);
-		}	
+			}	
+		}
 	}
 	function undoFunction() {	
 		if (self.undoList.length==0) {
@@ -1940,7 +1949,7 @@ Sudoku.initializeEvents = function(newPuzzle) {
 			let domCandidates = [1,2,3,4,5,6,7,8,9];
 			let related = self.getRelatedCells(cell);
 			for (let c of related) {
-				if (c==cell) continue;
+				if (c.equal(cell)) continue;
 				let value = c.domValue;
 				let ndx = domCandidates.indexOf(value);
 				if (ndx!=-1) domCandidates.splice(ndx,1);
@@ -1975,14 +1984,16 @@ Sudoku.initializeEvents = function(newPuzzle) {
 				return true;
 			}
 		}
-		for (let i=0;i<81;i++) {
-			let cell = self.puzzle[i];
-			if (cell.domValue==' ') {
+		if (Sudoku.showPencilNotes != "none") {
+			for (let i=0;i<81;i++) {
+				let cell = self.puzzle[i];
 				let domCandidates = getCandidates(cell);
-				let rc = domCandidates.filter(x=>!cell.domCandidates.includes(x));
-				if (rc.length>0){
-					displayError(cell,"Pencil value is incorrect");
-					return true;
+				if (cell.domValue==' ') {
+					let rc = domCandidates.filter(x=>!cell.domCandidates.includes(x));
+					if (rc.length>0){
+						displayError(cell,"Pencil value is incorrect");
+	//					Sudoku.undoList.pop();			// ignore undo for these changes.
+					}
 				}
 			}
 		}
