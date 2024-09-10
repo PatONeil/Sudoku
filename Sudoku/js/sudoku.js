@@ -18,6 +18,7 @@ Object.prototype.equal = function(obj2) {
 
 var Sudoku = {};
 Sudoku.puzzle=[];
+Sudoku.skipUndoRecording = false;
 Sudoku.undoList = [];
 Sudoku.generatePuzzle=function(level) {
 	function shuffle(array) {
@@ -195,7 +196,7 @@ Sudoku.addPuzzle = function(rowColList) {
 		set: function(value) {
 			if (this.initialValue!=' ') return;
 			let element = this.domCell.querySelector('span');
-			if (this.status!='undo') 
+			if (!Sudoku.skipUndoRecording) 
 				Sudoku.undoList[Sudoku.undoList.length-1].push({cell:this,type:'v',operation:'s',value:element.innerText});
 			if (!element.innerText ||element.innerText==' ') {
 				this.domCell.querySelector('span').innerHTML=value;
@@ -217,7 +218,7 @@ Sudoku.addPuzzle = function(rowColList) {
 		},
 		set: function(value) {
 			// update candidates from array
-			if (this.status!='undo') 
+			if (!Sudoku.skipUndoRecording) 
 				Sudoku.undoList[Sudoku.undoList.length-1].push({cell:this,type:'c',operation:'s',value:this.domCandidates});
 			let c = this.domCell.querySelectorAll('.pencil');
 			for (let i=1;i<=9;i++) {
@@ -443,21 +444,20 @@ Sudoku.animateFinish=function() {
 };
 Sudoku.ratePuzzle = function() {
 	function redo() {
+		Sudoku.skipUndoRecording=true;
 		Sudoku.undoList.reverse();
 		for (let undoList of Sudoku.undoList) {
 			undoList.reverse();
 			for (let item of undoList) {
-				let status = item.cell.status;
-				item.cell.status='undo';
 				if (item.type=='v') {
 					item.cell.domValue=item.value;
 				}
 				else {
 					item.cell.domCandidates=item.value;
 				}
-				item.cell.status=status;
 			}
 		}
+		Sudoku.skipUndoRecording=false;
 		Sudoku.undoList=[];
 	}
 	let list =[];
@@ -501,7 +501,7 @@ Sudoku.ratePuzzle = function() {
 	redo();	
 	list = list.filter(el => el.length);
 	document.querySelector('.hints').innerHTML = 
-		`Rating of puzzle is ${rating}. It contains ${list.join(', ').replace(/,([^,]*)$/, " and" + '$1')}.`;	
+		`This puzzle contains ${list.join(', ').replace(/,([^,]*)$/, " and" + '$1')}.`;	
 	return true;
 };
 Sudoku.getHint = function() {
@@ -573,7 +573,7 @@ Sudoku.getHint = function() {
 	}	
 	if (document.querySelector('[data-button="check"]').click()) return;
 	if (Sudoku.showPencilNotes == "none") {
-		Sudoku.undoList.push([]);
+		Sudoku.skipUndoRecording=true;
 		Sudoku.updateDomCandidates();
 	}
 	Sudoku.hintOjbect = {affectedCells:[Sudoku.active]};
@@ -589,7 +589,7 @@ Sudoku.getHint = function() {
 		Sudoku.hintOjbect = rc;
 		if (Sudoku.showPencilNotes == "none") {
 			for (c of Sudoku.puzzle) c.domCandidates=[];
-			Sudoku.undoList.pop();
+			Sudoku.skipUndoRecording=false;
 		}
 		displayHintDialog(rc);
 		return;
@@ -597,7 +597,7 @@ Sudoku.getHint = function() {
 	document.querySelector('.hints').innerHTML = 'No hint avaiable without more information.  Please fill in pencil notes.';
 	if (Sudoku.showPencilNotes == "none") {
 		for (c of Sudoku.puzzle) c.domCandidates=[]
-		Sudoku.undoList.pop();
+		Sudoku.skipUndoRecording=false;
 	}
 };
 Sudoku.solvers={
@@ -1787,10 +1787,10 @@ Sudoku.newGame = function() {
 	Sudoku.initializeEvents(true);
 	let rc = Sudoku.ratePuzzle();
 	if (this.showPencilNotes != "filled") {
-			Sudoku.undoList.push([]);
+			Sudoku.skipUndoRecording=true;
 			for (let cell of Sudoku.puzzle) cell.domCandidates=[];
 			document.querySelectorAll('.pencil').forEach((p)=> p.innerText=" ");
-			Sudoku.undoList.pop();
+			Sudoku.skipUndoRecording=false;
 	}
 	Sudoku.undoList.push([]);
 	return rc;	
